@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
 
-from utils.gradcam.gradcam_utils import find_alexnet_layer, find_vgg_layer, find_resnet_layer, find_densenet_layer, find_squeezenet_layer
+from motleyNet.utils.gradcam.gradcam_utils import find_alexnet_layer, find_vgg_layer, find_resnet_layer, find_densenet_layer, find_squeezenet_layer
 
 class GradCAM:
     """
