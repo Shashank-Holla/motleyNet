@@ -1,7 +1,7 @@
 import torch
 # Train
 
-def train(model, device, train_loader, optimizer, criterion, l1_lambda):
+def train(model, device, train_loader, optimizer, criterion, l1_lambda, scheduler=None):
     model.train()
 
     # collect stats - for accuracy calculation
@@ -34,6 +34,9 @@ def train(model, device, train_loader, optimizer, criterion, l1_lambda):
         label_loss.backward()
         # Optimizer
         optimizer.step()
+
+        #Scheduler update. For one cycle policy, scheduler is to be updated after every batch.
+        scheduler.step()
 
         # Metrics calculation- For epoch Accuracy(total correct pred/total items) and loss 
         pred = label_pred.argmax(dim=1, keepdim=True)
